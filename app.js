@@ -33,9 +33,6 @@ app.post('/produtos', (req, res)=>{
 
 
 
-
-
-
-app.listen((3000),()=>{
+app.listen((3001),()=>{
     console.log("servidor no ar")
 })
