@@ -18,14 +18,29 @@ routes.get('/', (req, res)=>{
 
 //precisa passar pelo app.use(express.json())
 
+
+
+function validadePrice (req, res, next){
+    const {price} =  req.body
+
+    if (price){
+        next()
+    }
+
+    return res.status(400).send('Produto sem preço')
+}
+
+
+
+
 //posta um produto que eu passar pelo body
-routes.post('/', (req, res)=>{
+routes.post('/', validadePrice, (req, res)=>{
 
     let corp = req.body
 
-   const newProdutos = [...produtos, corp]
+    produtos = [...produtos, corp]
 
-    res.json(newProdutos)
+   return res.json(produtos)
 })
 
 
